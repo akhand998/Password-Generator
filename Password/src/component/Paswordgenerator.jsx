@@ -1,9 +1,11 @@
 import React,{useState} from "react";
+import { Copy } from "lucide-react";
+
 const Passwordgenerator = () => {
   const [password, setPassword] = useState("");
   const [length, setLength] = useState(12);
   const [strenght, setStrength] = useState(50);
-
+  const [copied, setCopied] = useState(false);
   const generatePassword = () => {
     const lowerCase = "abcdefghijklmnopqrstuvwxyz";
     const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -20,6 +22,16 @@ const Passwordgenerator = () => {
     }
     setPassword(generatedPassword);
   };
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(password)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      })
+      
+  }
   const getSliderBackground = () => {
     return{
       background:'linear-gradient(to right, red 0%,orange 25%,yellow 50%,lightgreen 75%,green 100%)',
@@ -58,8 +70,18 @@ const Passwordgenerator = () => {
         className="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600">Generate Password</button>
         {password && (<div className="mt-4 p-2 bg-amber-200 rounded-lg">
           <h2 className="text-lg font-bold">Generated Password:</h2>
-          <p className="text-xl font-mono">{password}</p>
+          <p className="text-xl font-mono">{password}
+            <button
+              onClick={copyToClipboard}
+              className="bg-amber-500 text-white px-2 py-1 rounded-lg ml-2 hover:bg-amber-600"title="copy password">
+              <Copy size={16} color="white" />
+            </button>
+          </p>
         </div>
+
+        )}
+        {copied && (
+          <p className="text-white-500 mt-2">Password copied to clipboard!</p>
         )}
     </div>
   );
