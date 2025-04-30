@@ -38,10 +38,10 @@ const Passwordgenerator = () => {
     }
   };
   return (
-    <div className="max-w-md mx-auto bg-amber-400 p-6 rounded-lg shadow-md text-center">
+    <div className="w-96 bg-amber-400 p-6 rounded-lg shadow-md text-center">
       <h1 className="text-2xl font-bold mb-4">Password Generator</h1>
       <div className="flex flex-col items-center mb-4">
-        <lebel className="text-left">
+        <label className="text-left">
           Password Length: {length}
           <input
             type="range"
@@ -51,8 +51,8 @@ const Passwordgenerator = () => {
             onChange={(e) => setLength(parseInt(e.target.value))}
             className="w-full"
           />
-        </lebel>
-        <lebel className="text-left">
+        </label>
+        <label className="text-left">
           Password Strength: {strength}
           <input
             type="range"
@@ -63,7 +63,7 @@ const Passwordgenerator = () => {
             className="w-full appearance-none h-2 bg-amber-300 rounded-lg"
             style={getSliderBackground()}
           />
-        </lebel>  
+        </label>  
       </div>
       <button
         onClick={generatePassword}
