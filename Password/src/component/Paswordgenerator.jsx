@@ -38,7 +38,7 @@ const Passwordgenerator = () => {
     }
   };
   return (
-    <div className="w-96 bg-amber-400 p-6 rounded-lg shadow-md text-center">
+    <div className="w-96 bg-amber-400 h-[22.15rem] p-6 rounded-lg shadow-md text-center">
       <h1 className="text-2xl font-bold mb-4">Password Generator</h1>
       <div className="flex flex-col items-center mb-4">
         <label className="text-left">
