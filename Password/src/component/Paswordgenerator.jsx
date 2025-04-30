@@ -4,7 +4,7 @@ import { Copy } from "lucide-react";
 const Passwordgenerator = () => {
   const [password, setPassword] = useState("");
   const [length, setLength] = useState(12);
-  const [strenght, setStrength] = useState(50);
+  const [strength, setStrength] = useState(50);
   const [copied, setCopied] = useState(false);
   const generatePassword = () => {
     const lowerCase = "abcdefghijklmnopqrstuvwxyz";
@@ -13,8 +13,8 @@ const Passwordgenerator = () => {
     const symbols = "!@#$%^&*()_+[]{}|;:,.<>?";
 
     let characters = lowerCase;
-    if (strenght>=30)characters+= upperCase+ numbers;
-    if (strenght>=60)characters+= symbols;
+    if (strength>=30)characters+= upperCase+ numbers;
+    if (strength>=60)characters+= symbols;
     let generatedPassword = "";
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
@@ -53,12 +53,12 @@ const Passwordgenerator = () => {
           />
         </lebel>
         <lebel className="text-left">
-          Password Strength: {strenght}
+          Password Strength: {strength}
           <input
             type="range"
             min="0"
             max="100"
-            value={strenght}
+            value={strength}
             onChange={(e) => setStrength(parseInt(e.target.value))}
             className="w-full appearance-none h-2 bg-amber-300 rounded-lg"
             style={getSliderBackground()}
